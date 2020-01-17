@@ -2,16 +2,14 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-import dotenv
 
 
 def main():
-    dotenv.read_dotenv()
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dsbj.config")
-    os.environ.setdefault("DJANGO_CONFIGURATION", "Local")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.local_settings")
 
     try:
-        from configurations.management import execute_from_command_line
+        from django.core.management import execute_from_command_line
+        # from configurations.management import execute_from_command_line
     except ImportError:
         # The above import may fail for some other reason. Ensure that the
         # issue is really that Django is missing to avoid masking other
@@ -25,6 +23,10 @@ def main():
                 "forget to activate a virtual environment?"
             )
         raise
+
+    # This allows easy placement of apps within the interior dsbj directory.
+    current_path = os.path.dirname(os.path.abspath(__file__))
+    sys.path.append(os.path.join(current_path, "dsbj"))
     execute_from_command_line(sys.argv)
 
 

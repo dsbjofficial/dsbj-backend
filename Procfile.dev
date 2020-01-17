@@ -1,0 +1,2 @@
+redis: redis-server --port 6379
+web: gunicorn dsbj.wsgi --port 5000 --host 0.0.0.0

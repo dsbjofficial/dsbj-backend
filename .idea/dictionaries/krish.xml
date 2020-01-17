@@ -7,9 +7,14 @@
       <w>dsbj</w>
       <w>gunicorn</w>
       <w>ipdb</w>
+      <w>locmem</w>
       <w>mkdocs</w>
       <w>newrelic</w>
+      <w>nologcapture</w>
       <w>noqa</w>
+      <w>pytest</w>
+      <w>pythonpath</w>
+      <w>smtp</w>
       <w>storages</w>
     </words>
   </dictionary>

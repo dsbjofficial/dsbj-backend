@@ -3,7 +3,6 @@ pytz==2019.3
 Django==3.0.2
 django-configurations==2.2
 gunicorn==20.0.4
-newrelic==5.4.1.134
 
 # Heroku
 django-heroku
@@ -26,14 +25,17 @@ django-storages==1.8.0
 boto3==1.11.1
 
 # Developer Tools
+black
 ipdb==0.12.3
 ipython==7.11.1
 mkdocs==1.0.4
-flake8==3.7.9
-django-dotenv
+python-dotenv
 
 # Testing
 mock==3.0.5
 factory-boy==2.12.0
-django-nose==1.4.6
 coverage==5.0.3
+pytest
+pytest-cov
+pytest-django
+pytest-dotenv
