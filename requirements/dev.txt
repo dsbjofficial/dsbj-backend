@@ -1,0 +1,15 @@
+-r common.txt
+
+# Developer Tools
+ipdb==0.12.3
+ipython==7.11.1
+mkdocs==1.0.4
+flake8==3.7.9
+django-dotenv
+
+# Testing
+mock==3.0.5
+factory-boy==2.12.0
+django-nose==1.4.6
+nose-progressive==1.5.2
+coverage==5.0.3
