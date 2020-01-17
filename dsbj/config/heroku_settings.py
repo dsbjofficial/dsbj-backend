@@ -12,29 +12,34 @@ SECURE_SSL_REDIRECT = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
-
 DATABASES = {
     'default': dj_database_url.config(ssl_require=True)
 }
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-# Static files (CSS, JavaScript, Images)
+# AWS S3 Storage
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 # http://django-storages.readthedocs.org/en/latest/index.html
 INSTALLED_APPS += ('storages',)
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_ACCESS_KEY_ID = os.getenv('DJANGO_AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.getenv('DJANGO_AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.getenv('DJANGO_AWS_STORAGE_BUCKET_NAME')
-AWS_DEFAULT_ACL = 'public-read'
+AWS_S3_CUSTOM_DOMAIN = "dsbj.s3-ap-southeast-1.amazonaws.com"
+AWS_DEFAULT_ACL = None
 AWS_AUTO_CREATE_BUCKET = True
-AWS_QUERYSTRING_AUTH = False
-MEDIA_URL = f'https://s3.amazonaws.com/{AWS_STORAGE_BUCKET_NAME}/'
 AWS_HEADERS = {
     'Cache-Control': 'max-age=86400, s-maxage=86400, must-revalidate',
 }
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# S3 Static Files
+AWS_STATIC_LOCATION = 'static'
+STATIC_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.{AWS_S3_CUSTOM_DOMAIN}/{AWS_STATIC_LOCATION}/'
+STATICFILES_STORAGE = 'dsbj.storage_backends.StaticStorage'
+# S3 Public Media Files
+AWS_PUBLIC_MEDIA_LOCATION = 'media/public'
+DEFAULT_FILE_STORAGE = 'dsbj.storage_backends.PublicMediaStorage'
+# S3 Private Media Files
+AWS_PRIVATE_MEDIA_LOCATION = 'media/private'
+PRIVATE_MEDIA_FILE_STORAGE = 'dsbj.storage_backends.PrivateMediaStorage'
 
 django_heroku.settings(locals(), databases=False, test_runner=False, allowed_hosts=False, secret_key=False,
                        staticfiles=False)
