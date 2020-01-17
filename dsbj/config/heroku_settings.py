@@ -4,7 +4,7 @@ import django_heroku
 from .common_settings import *
 
 
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY')
 # Site
 ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS += ("gunicorn", )

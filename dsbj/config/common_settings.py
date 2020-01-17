@@ -1,9 +1,7 @@
 import os
 from os.path import join
 from distutils.util import strtobool
-import dotenv
 
-dotenv.load_dotenv()
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -14,9 +12,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     # Third party apps
-    'rest_framework',            # utilities for rest apis
+    'rest_framework',  # utilities for rest apis
     'rest_framework.authtoken',  # token authentication
-    'django_filters',            # for filtering rest endpoints
+    'django_filters',  # for filtering rest endpoints
 
     # Your apps
     'dsbj.users',
@@ -35,7 +33,7 @@ MIDDLEWARE = (
 
 ALLOWED_HOSTS = ["*"]
 ROOT_URLCONF = 'dsbj.urls'
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY')
 WSGI_APPLICATION = 'dsbj.wsgi.application'
 
 # Email
@@ -44,6 +42,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ADMINS = (
     ('Author', 'penukonda.krishna.moorthy@gmail.com'),
 )
+
+DATABASES = {
+    'default': {'ENGINE': 'django.db.backends.sqlite3', "NAME": 'db.sqlite3'}
+}
 
 # General
 # APPEND_SLASH = False

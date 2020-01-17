@@ -1,9 +1,9 @@
 import os
 from .common_settings import *
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 DEBUG = True
+os.environ.setdefault("SECRET_KEY", "(cwvjff3d+*db30ym7cfz(sf43^bmves2qb67w%47_sf734qa*")
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # Mail
 EMAIL_HOST = 'localhost'
