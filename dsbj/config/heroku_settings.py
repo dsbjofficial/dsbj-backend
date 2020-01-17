@@ -1,5 +1,7 @@
 import os
-from .common import Common
+import dj_database_url
+import django_heroku
+from .common_settings import Common
 
 
 class Production(Common):
@@ -14,6 +16,15 @@ class Production(Common):
     # https://docs.djangoproject.com/en/2.0/howto/static-files/
     # http://django-storages.readthedocs.org/en/latest/index.html
     INSTALLED_APPS += ('storages',)
+
+    # Postgres
+    DATABASES = {
+        'default': dj_database_url.config(
+            default='postgres://postgres:@postgres:5432/postgres',
+            conn_max_age=int(os.getenv('POSTGRES_CONN_MAX_AGE', 600))
+        )
+    }
+
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     AWS_ACCESS_KEY_ID = os.getenv('DJANGO_AWS_ACCESS_KEY_ID')
