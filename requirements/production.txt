@@ -1,5 +1,0 @@
--r common.txt
-
-# Static and Media Storage
-django-storages==1.8.0
-boto3==1.11.1

@@ -3,7 +3,7 @@ language: python
 services:
   - docker
 python:
-  - "3.6"
+  - "3.7"
 before_script:
   - docker-compose build
 script:
@@ -14,5 +14,5 @@ script:
 notifications:
   email: false
 
-cache:
-  pip: true
+#cache:
+#  pip: true

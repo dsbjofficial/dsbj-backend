@@ -2,13 +2,10 @@ FROM python:3.7
 MAINTAINER Krishna Penukonda (penukonda.krishna.moorthy@gmail.com)
 ENV PYTHONUNBUFFERED 1
 
-# Allows docker to cache installed dependencies between builds
-COPY ./requirements.txt requirements.txt
-RUN pip install -r requirements.txt
-
 # Adds our application code to the image
 COPY . code
 WORKDIR code
+RUN pip install -r requirements.txt
 
 EXPOSE 8000
 
