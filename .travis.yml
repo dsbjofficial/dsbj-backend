@@ -7,7 +7,7 @@ python:
 #before_script:
 #  - docker-compose build
 script:
-  - python manage.py test
+  - pytest
 notifications:
   email: false
 #cache:

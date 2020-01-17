@@ -26,9 +26,6 @@ boto3==1.11.1
 
 # Developer Tools
 black
-ipdb==0.12.3
-ipython==7.11.1
-mkdocs==1.0.4
 python-dotenv
 
 # Testing
