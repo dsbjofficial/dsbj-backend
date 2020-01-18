@@ -2,8 +2,8 @@ import os
 from .common_settings import *
 
 DEBUG = True
-os.environ.setdefault("SECRET_KEY", "(cwvjff3d+*db30ym7cfz(sf43^bmves2qb67w%47_sf734qa*")
-SECRET_KEY = os.getenv("SECRET_KEY")
+os.environ.setdefault("DJANGO_SECRET_KEY", "(cwvjff3d+*db30ym7cfz(sf43^bmves2qb67w%47_sf734qa*")
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
 # Mail
 EMAIL_HOST = 'localhost'

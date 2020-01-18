@@ -14,6 +14,6 @@ app_path = os.path.abspath(
 )
 sys.path.append(os.path.join(app_path, "dsbj"))
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.heroku_settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.production_settings")
 
 application = get_wsgi_application()

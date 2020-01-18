@@ -5,6 +5,7 @@
       <w>djangorestframework</w>
       <w>dotenv</w>
       <w>dsbj</w>
+      <w>dyno</w>
       <w>gunicorn</w>
       <w>ipdb</w>
       <w>locmem</w>

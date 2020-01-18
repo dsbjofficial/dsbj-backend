@@ -33,7 +33,7 @@ MIDDLEWARE = (
 
 ALLOWED_HOSTS = ["*"]
 ROOT_URLCONF = 'dsbj.urls'
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 WSGI_APPLICATION = 'dsbj.wsgi.application'
 
 # Email
